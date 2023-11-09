@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   end
 
   private
+
   def update_user_posts_counter
     author.update_posts_counter
   end
