@@ -35,6 +35,34 @@ RSpec.describe Post, type: :model do
     expect(post.errors[:likes_counter]).to include('must be greater than or equal to 0')
   end
 
+  it 'is not valid with a non-integer comments_counter' do
+    user = User.create(name: 'Tom', post_counter: 0)
+    post = user.posts.new(title: 'My Post', comments_counter: 1.5, likes_counter: 0)
+    post.valid?
+    expect(post.errors[:comments_counter]).to include('must be an integer')
+  end
+
+  it 'is not valid with a non-numeric comments_counter' do
+    user = User.create(name: 'Tom', post_counter: 0)
+    post = user.posts.new(title: 'My Post', comments_counter: 'abc', likes_counter: 0)
+    post.valid?
+    expect(post.errors[:comments_counter]).to include('is not a number')
+  end
+
+  it 'is not valid with a non-integer likes_counter' do
+    user = User.create(name: 'Tom', post_counter: 0)
+    post = user.posts.new(title: 'My Post', comments_counter: 0, likes_counter: 1.5)
+    post.valid?
+    expect(post.errors[:likes_counter]).to include('must be an integer')
+  end
+
+  it 'is not valid with a non-numeric likes_counter' do
+    user = User.create(name: 'Tom', post_counter: 0)
+    post = user.posts.new(title: 'My Post', comments_counter: 0, likes_counter: 'abc')
+    post.valid?
+    expect(post.errors[:likes_counter]).to include('is not a number')
+  end
+
   it 'updates the posts counter for a user' do
     user = User.create(name: 'Tom', post_counter: 0)
     post = user.posts.create(title: 'My Post', comments_counter: 0, likes_counter: 0)
