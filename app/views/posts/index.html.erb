@@ -1,0 +1,10 @@
+<!-- Placeholder for index -->
+<div>
+  <% @posts.each do |post| %>
+    <div>
+      <p>Post #<%= post.id %> by <%= post.author.name %></p>
+      <p><%= post.body %></p>
+      <%= link_to "View Post", post_path(post) %>
+    </div>
+  <% end %>
+</div>
