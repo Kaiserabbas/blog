@@ -1,0 +1,10 @@
+<!-- Placeholder for index -->
+<div>
+  <% @users.each do |user| %>
+    <div>
+      <span><%= user.name %></span>
+      <p>No of Posts: <%= user.posts.count %></p>
+      <%= link_to "View Profile", user_path(user) %>
+    </div>
+  <% end %>
+</div>

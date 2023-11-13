@@ -1,0 +1,20 @@
+<!-- Placeholder for show -->
+<div>
+  <div>
+    <span><%= @user.name %></span>
+    <p>No of Posts: <%= @user.posts.count %></p>
+  </div>
+  <hr />
+  <div>
+    <p>Bio: <%= @user.bio %></p>
+  </div>
+  <hr />
+  <div>
+    <% @user.posts.each do |post| %>
+      <p>Post #<%= post.id %>: <%= post.body %></p>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "See all posts", user_posts_path(@user) %>
+  </div>
+</div>
