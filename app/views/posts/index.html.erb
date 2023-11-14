@@ -1,10 +1,11 @@
 <!-- Placeholder for index -->
 <div>
+  <h1>All posts by User<h1>
   <% @posts.each do |post| %>
     <div>
       <p>Post #<%= post.id %> by <%= post.author.name %></p>
-      <p><%= post.body %></p>
-      <%= link_to "View Post", post_path(post) %>
+      <p><%= post.text %></p>
+      <%= link_to "View Post", user_post_path(@user, post) %>
     </div>
   <% end %>
 </div>
