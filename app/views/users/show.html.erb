@@ -11,7 +11,7 @@
   <hr />
   <div>
     <% @user.posts.each do |post| %>
-      <p>Post #<%= post.id %>: <%= post.body %></p>
+      <p>Post #<%= post.id %>: <%= post.text %></p>
     <% end %>
   </div>
   <div>

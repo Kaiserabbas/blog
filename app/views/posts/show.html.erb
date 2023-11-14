@@ -1,11 +1,7 @@
-<!-- Placeholder for show -->
 <div>
-  <p>Post #<%= @post.id %> by <%= @post.author.name %></p>
-  <p><%= @post.body %></p>
-  <!-- Repeat for other comments -->
-  <div>
-    <% @comments.each do |comment| %>
-      <p><%= comment.user.name %>: <%= comment.text %></p>
-    <% end %>
-  </div>
+<h1>Selected posts by a Specified User<h1>
+  <% @user.posts.each do |post| %>
+    <p>Post #<%= post.id %>: <%= post.text %></p>
+    <%= link_to "View Post", user_post_path(@user, post) %>
+  <% end %>
 </div>
