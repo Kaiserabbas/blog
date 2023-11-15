@@ -1,11 +1,31 @@
 <!-- Placeholder for index -->
 <div>
-  <h1>All posts by User<h1>
+  <div class="user">
+    <div class="user-photo">
+      <%= image_tag(@user.photo, alt: @user.name, class: "photo") %>
+    </div>
+    <div class="user-details">
+      <h1><%= @user.name %></h1>
+      <span>No of Posts: <%= @user.posts.count %></span>
+    </div>
+  </div>
+
   <% @posts.each do |post| %>
-    <div>
-      <p>Post #<%= post.id %> by <%= post.author.name %></p>
+    <div class="user-posts">
+      <h2><strong>            <%= link_to "Post ##{post.id}", user_post_path(@user, post) %>
+</strong> </h2>
       <p><%= post.text %></p>
-      <%= link_to "View Post", user_post_path(@user, post) %>
+      <p class="comments-likes">Comments: <%= post.comments.count %>, Likes: <%= post.likes.count %> </p>
+      <hr>
+      <% post.comments.each do |comment| %>
+        <p><strong><%= comment.user.name %>: </strong> <%= comment.text %></p>
+      <% end %>
     </div>
   <% end %>
+  <button onclick="goBack()" class="back-button">Back</button>
 </div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
