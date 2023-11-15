@@ -1,11 +1,15 @@
 <!-- Placeholder for index -->
-<div>
-<h1>List of all users:</h1>
-  <% @users.each do |user| %>
-    <div>
-      <span><%= user.name %></span>
-      <p>No of Posts: <%= user.posts.count %></p>
-      <%= link_to "View Profile", user_path(user) %>
-    </div>
-  <% end %>
-</div>
+  <div class="main">
+    <h1>List of all users:</h1>
+    <% @users.each do |user| %>
+      <div class="user">
+        <div class= "user-photo">
+          <%= image_tag(user.photo, alt: user.name, class: "photo") %>
+        </div>
+        <div class="user-details">
+          <h1><%= link_to user.name, user_path(user) %></h1>
+          <span>No of Posts: <%= user.posts.count %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
