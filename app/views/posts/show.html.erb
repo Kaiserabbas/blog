@@ -1,7 +1,16 @@
-<div>
-<h1>Selected posts by a Specified User<h1>
-  <% @user.posts.each do |post| %>
-    <p>Post #<%= post.id %>: <%= post.text %></p>
-    <%= link_to "View Post", user_post_path(@user, post) %>
-  <% end %>
+<div class="user-posts">
+    <div class="single-post">
+      <h2><strong> Post #<%= @post.id %> by <%= @user.name %></strong> </h2><span>Comments: <%= @post.comments.count %>, Likes: <%= @post.likes.count %></span>
+      </div>
+    <p><%= @post.text %></p>
+    <hr>
+      <% @post.comments.each do |comment| %>
+        <p><strong><%= comment.user.name %>: </strong> <%= comment.text %></p>
+      <% end %>
 </div>
+<button onclick="goBack()" class="back-button">Back</button>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
