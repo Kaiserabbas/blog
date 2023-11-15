@@ -15,8 +15,8 @@
 
   </div>
   <div >
-    <% @user.posts.each do |post|%>
-    <div class= "user-posts">
+    <% @user.recent_posts.each do |post| %>
+     <div class= "user-posts">
       <h2>Post #<%= post.id %></h2>
       <p><%= post.text %></p>
       <p class= "comments-likes">Comments: <%= @user.comments.count %>, Likes: <%= @user.likes.count %> </p>
