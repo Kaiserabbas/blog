@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(data:font/woff2;base64,..) format('woff2');
+}
+
+body {
+  background: radial-gradient(#fff, #c0c0eba6);
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 20px auto;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.user {
+  display: flex;
+  margin: 10px 0 10px 10px;
+}
+
+.user-photo {
+  border: 2px solid #000;
+  width: 12em;
+  height: 8em;
+  padding: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 7px 2px #9595f18c;
+}
+
+.photo {
+  max-width: 6em;
+  max-height: 6em;
+}
+
+.user-details {
+  border-radius: 10px;
+  box-shadow: 0 0 7px 2px #9595f1a1;
+  border: 2px solid #000000be;
+  margin: 0 10px;
+  width: 50em;
+  height: 8em;
+  padding: 0 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background-color: #9595f1;
+  color: #000;
+  font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0 0 7px 2px #9595f1a1;
+  border: 2px solid #000000be;
+  padding: 10px;
+  width: 10em;
+  margin: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button a {
+  text-decoration: none;
+  color: #000;
+}
+
+.all-posts-button a {
+  text-decoration: none;
+  color: #000;
+}
+
+.user-details h1 a {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.user-details span {
+  align-self: flex-end;
+}
+
+.bio,
+.user-posts {
+  border-radius: 10px;
+  box-shadow: 0 0 7px 2px #9595f1a1;
+  border: 2px solid #000000be;
+  padding: 0 20px 10px 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-posts .comments-likes {
+  align-self: flex-end;
+}
+
+.all-posts-button {
+  color: #000;
+  font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0 0 7px 2px #9595f1a1;
+  border: 2px solid #000000be;
+  padding: 10px;
+  width: 10em;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.all-posts-button:hover {
+  background-color: #9595f1;
+}
+
+hr {
+  border: 2px solid #ddd;
+  margin: 10px 0;
+}
+
+.single-post {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}

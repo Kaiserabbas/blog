@@ -1,11 +1,7 @@
 <!-- Placeholder for index -->
-<div>
-<h1>List of all users:</h1>
+<div class="main">
+  <h1>List of all users:</h1>
   <% @users.each do |user| %>
-    <div>
-      <span><%= user.name %></span>
-      <p>No of Posts: <%= user.posts.count %></p>
-      <%= link_to "View Profile", user_path(user) %>
-    </div>
+    <%= render partial: 'users/user_details', locals: { user: user } %>
   <% end %>
 </div>

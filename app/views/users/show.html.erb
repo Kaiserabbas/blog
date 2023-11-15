@@ -1,20 +1,36 @@
 <!-- Placeholder for show -->
-<div>
-  <div>
-    <span><%= @user.name %></span>
-    <p>No of Posts: <%= @user.posts.count %></p>
+<div>      
+  <div class="user">
+    <div class= "user-photo">
+      <%= image_tag(@user.photo, alt: @user.name, class: "photo") %>
+      </div>
+      <div class="user-details">
+        <h1><%= @user.name %></h1>
+        <span>No of Posts: <%= @user.posts.count %></span>
+      </div>
+    </div>
+  <div class=bio>
+    <h2>Bio:</h2>
+    <p><%= @user.bio %></p>
+
   </div>
-  <hr />
-  <div>
-    <p>Bio: <%= @user.bio %></p>
-  </div>
-  <hr />
-  <div>
-    <% @user.posts.each do |post| %>
-      <p>Post #<%= post.id %>: <%= post.text %></p>
+  <div >
+    <% @user.recent_posts.each do |post| %>
+     <div class= "user-posts">
+     <h2><%= link_to "Post ##{post.id}", user_post_path(@user, post) %>
+      </h2>
+      <p><%= post.text %></p>
+      <p class= "comments-likes">Comments: <%= @user.comments.count %>, Likes: <%= @user.likes.count %> </p>
+    </div>   
     <% end %>
   </div>
-  <div>
+  <div class="all-posts-button">
     <%= link_to "See all posts", user_posts_path(@user) %>
   </div>
+  <button onclick="goBack()" class="back-button">Back</button>
 </div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

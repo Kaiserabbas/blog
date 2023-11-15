@@ -1,0 +1,9 @@
+.all-posts {
+  display: flex;
+  flex-direction: column;
+  color: #9595f1;
+}
+
+.all-posts .comments-likes {
+  align-self: flex-end;
+}
