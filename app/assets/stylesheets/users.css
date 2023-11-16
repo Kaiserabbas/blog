@@ -67,6 +67,19 @@ button a {
   color: #000;
 }
 
+.button {
+  background-color: #9595f1;
+  color: #000;
+  font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0 0 7px 2px #9595f1a1;
+  border: 2px solid #000000be;
+  padding: 10px;
+  width: 5em;
+  text-align: center;
+  cursor: pointer;
+}
+
 .all-posts-button a {
   text-decoration: none;
   color: #000;
@@ -122,4 +135,8 @@ hr {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+}
+
+.leave-comment strong a {
+  text-decoration: none;
 }
