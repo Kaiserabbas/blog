@@ -1,16 +1,20 @@
 <div class="user-posts">
     <div class="single-post">
       <h2><strong> Post #<%= @post.id %> by <%= @user.name %></strong> </h2><span>Comments: <%= @post.comments.count %>, Likes: <%= @post.likes.count %></span>
-      </div>
+    </div>
     <p><%= @post.text %></p>
     <hr>
-      <% @post.comments.each do |comment| %>
-        <p><strong><%= comment.user.name %>: </strong> <%= comment.text %></p>
+      <%= form_with(model: [@post, @like], url: user_post_likes_path(@post.author, @post), method: :post) do |form| %>
+     <%= form.submit 'Like', class: 'button' %>
       <% end %>
+    <h3 class="leave-comment"><strong><%= link_to "Leave a comment", new_user_post_comment_path(@post.author, @post) %></strong></h3>
+      <% @post.comments.each do |comment| %>
+      <p>
+        <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+        <%= link_to "Edit", edit_user_post_comment_path(@post.author, @post, comment) %>
+      </p>
+<% end %>
+
 </div>
-<button onclick="goBack()" class="back-button">Back</button>
-<script>
-  function goBack() {
-    window.history.back();
-  }
-</script>
+<hr>
+<button><%= link_to 'Back', user_posts_path(@user) %></button>
