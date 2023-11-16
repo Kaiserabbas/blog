@@ -16,21 +16,17 @@
   </div>
   <div >
     <% @user.recent_posts.each do |post| %>
+      <% @post = post %>
      <div class= "user-posts">
      <h2><%= link_to "Post ##{post.id}", user_post_path(@user, post) %>
       </h2>
       <p><%= post.text %></p>
-      <p class= "comments-likes">Comments: <%= @user.comments.count %>, Likes: <%= @user.likes.count %> </p>
+      <p class= "comments-likes">Comments: <%= post.comments.count %>, Likes: <%= post.likes.count %> </p>
     </div>   
     <% end %>
   </div>
   <div class="all-posts-button">
     <%= link_to "See all posts", user_posts_path(@user) %>
   </div>
-  <button onclick="goBack()" class="back-button">Back</button>
+    <button><%= link_to 'Back to Users List', users_path %></button>
 </div>
-<script>
-  function goBack() {
-    window.history.back();
-  }
-</script>
