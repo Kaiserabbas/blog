@@ -7,17 +7,16 @@ class PostsController < ApplicationController
     @post = @user.posts.new
   end
 
-def create
-  @post = current_user.posts.build(post_params)
+  def create
+    @post = current_user.posts.build(post_params)
 
-  if @post.save
-    redirect_to user_posts_path(current_user), notice: 'Post was successfully created.'
-  else
-    logger.error @post.errors.inspect
-    render :new
+    if @post.save
+      redirect_to user_posts_path(current_user), notice: 'Post was successfully created.'
+    else
+      logger.error @post.errors.inspect
+      render :new
+    end
   end
-end
-
 
   def index
     @user = User.find(params[:user_id])
