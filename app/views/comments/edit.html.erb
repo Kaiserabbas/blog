@@ -1,0 +1,11 @@
+<!-- app/views/comments/edit.html.erb -->
+<%= link_to 'Back', user_post_path(@post.author, @post) %>
+
+<%= form_with(model: [@post, @comment], url: user_post_comment_path(@post.author, @post, @comment), method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_area :text %>
+  </div>
+
+  <%= form.submit "Update", class: "button" %>
+<% end %>
