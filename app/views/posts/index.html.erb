@@ -10,7 +10,7 @@
     </div>
   </div>
    <!-- Link to create a new post -->
-  <%= link_to "Create a New Post", new_user_post_path(@user) %>
+  <button><%= link_to "Create a New Post", new_user_post_path(@user) %></button>
   
   <% @posts.each do |post| %>
     <div class="user-posts">
@@ -19,7 +19,7 @@
       <p><%= post.text %></p>
       <p class="comments-likes">Comments: <%= post.comments.count %>, Likes: <%= post.likes.count %> </p>
       <hr>
-      <%= link_to "Add comment", new_user_post_comment_path(post.author, post) %>
+      <button><%= link_to "Add comment", new_user_post_comment_path(post.author, post) %></button>
       <% post.recent_comments.each do |comment| %>
         <p><strong><%= comment.user.name %>: </strong> <%= comment.text %></p>
       <% end %>
