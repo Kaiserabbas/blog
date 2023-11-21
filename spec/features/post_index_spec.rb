@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'User Post Index Page' do
-    let!(:user) { User.create(name: 'Qaisar', photo: 'https://avatars.githubusercontent.com/u/130588108?v=4') }
+  let!(:user) { User.create(name: 'Qaisar', photo: 'https://avatars.githubusercontent.com/u/130588108?v=4') }
   let!(:post) { Post.create(author_id: user.id, title: 'Test Post', text: 'Hello world!') }
   let!(:comment1) { Comment.create(user:, post:, text: 'Hello reviewer!') }
   let!(:comment2) { Comment.create(user:, post:, text: 'Hope everything is just fine for you!') }
