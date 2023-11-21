@@ -8,7 +8,7 @@
      <%= form.submit 'Like', class: 'button' %>
       <% end %>
     <h3 class="leave-comment"><strong><%= link_to "Leave a comment", new_user_post_comment_path(@post.author, @post) %></strong></h3>
-      <% @post.comments.each do |comment| %>
+      <% @post.comments.includes(:user).each do |comment| %>
       <p>
         <strong><%= comment.user.name %>:</strong> <%= comment.text %>
         <%= link_to "Edit", edit_user_post_comment_path(@post.author, @post, comment) %>
