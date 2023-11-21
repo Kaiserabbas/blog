@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Like, type: :model do
   it 'is valid with a user and a post' do
     user = User.create(name: 'John', post_counter: 0)
-    post = user.posts.create(title: 'My Post', comments_counter: 0, likes_counter: 0)
-    like = post.likes.new(user:)
+    post = Post.create(author: user, title: 'My Post')
+    like = Like.new(user: user, post: post)
     expect(like).to be_valid
   end
 
@@ -17,8 +17,8 @@ RSpec.describe Like, type: :model do
 
   it 'updates the likes counter for a post' do
     user = User.create(name: 'John', post_counter: 1)
-    post = user.posts.create(title: 'My Post', comments_counter: 0, likes_counter: 0)
-    like = post.likes.create(user:)
+    post = Post.create(author: user, title: 'My Post')
+    like = Like.create(user: user, post: post)
 
     like.increment_post_likes_counter
 
