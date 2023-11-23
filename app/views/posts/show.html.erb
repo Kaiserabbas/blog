@@ -1,6 +1,6 @@
 <div class="user-posts">
     <div class="single-post">
-      <h2><strong> Post #<%= @post.id %> by <%= @user.name %></strong> </h2><span>Comments: <%= @post.comments.count %>, Likes: <%= @post.likes.count %></span>
+    <h2><strong> Post #<%= @post.title %> by <%= @user.name %></strong> </h2><span>Comments: <%= @post.comments.count %>, Likes: <%= @post.likes.count %></span>
     </div>
     <p><%= @post.text %></p>
     <hr>
@@ -16,5 +16,6 @@
 <% end %>
 
 </div>
-<hr>
+<small>&nbsp;&nbsp;&nbsp;** Selected posts by a Specified User</small>
+<br>
 <button><%= link_to 'Back', user_posts_path(@user) %></button>
