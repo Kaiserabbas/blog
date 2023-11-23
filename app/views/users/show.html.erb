@@ -9,6 +9,7 @@
         <span>No of Posts: <%= @user.posts.count %></span>
       </div>
     </div>
+    <button><%= link_to 'Back to Users List', users_path %></button>
   <div class=bio>
     <h2>Bio:</h2>
     <p><%= @user.bio %></p>
@@ -18,7 +19,7 @@
     <% @user.recent_posts.each do |post| %>
       <% @post = post %>
      <div class= "user-posts">
-     <h2><%= link_to "Post ##{post.id}", user_post_path(@user, post) %>
+     <h2><%= link_to "#{post.title}", user_post_path(@user, post) %>
       </h2>
       <p><%= post.text %></p>
       <p class= "comments-likes">Comments: <%= post.comments.count %>, Likes: <%= post.likes.count %> </p>
@@ -28,5 +29,4 @@
   <div class="all-posts-button">
     <%= link_to "See all posts", user_posts_path(@user) %>
   </div>
-    <button><%= link_to 'Back to Users List', users_path %></button>
 </div>
