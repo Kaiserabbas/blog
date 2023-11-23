@@ -45,7 +45,6 @@ RSpec.describe Post, type: :model do
     expect(post.errors[:comments_counter]).to include('must be an integer')
   end
 
-
   it 'is not valid with a non-numeric comments_counter' do
     user = User.create(name: 'Tom', posts_counter: 0)
     post = user.posts.new(title: 'My Post', comments_counter: 'abc', likes_counter: 0)
