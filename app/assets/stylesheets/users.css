@@ -85,6 +85,10 @@ button a {
   color: #000;
 }
 
+.leave-comment a {
+  text-decoration: none;
+}
+
 .user-details h1 a {
   text-decoration: none;
   font-size: 1.2em;
@@ -135,8 +139,4 @@ hr {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
-}
-
-.leave-comment strong a {
-  text-decoration: none;
 }
