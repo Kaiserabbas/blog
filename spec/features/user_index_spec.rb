@@ -6,22 +6,22 @@ RSpec.feature 'User Index Page' do
   let!(:post1) { Post.create(author: user1, title: 'Post 01') }
   let!(:post2) { Post.create(author: user2, title: 'Post 02') }
 
-  scenario 'Displays usernames' do
+  scenario 'Displays the username of all other users' do
     visit users_path
     expect(page).to have_content(user1.name)
     expect(page).to have_content(user2.name)
   end
 
-  scenario 'Displays profile pictures' do
+  scenario 'Displays the profile picture for each user' do
     visit users_path
     expect(page).to have_css("img[src='#{user1.photo}']")
     expect(page).to have_css("img[src='#{user2.photo}']")
   end
 
-  scenario 'Displays post counts' do
+  scenario 'Displays the number of posts each user has written.' do
     visit users_path
-    expect(page).to have_content("Number of posts: #{user1.posts_counter}")
-    expect(page).to have_content("Number of posts: #{user2.posts_counter}")
+    expect(page).to have_content("No of Posts: #{user1.posts.count}")
+    expect(page).to have_content("No of Posts: #{user2.posts.count}")
   end
 
   scenario 'Redirects to user show page when clicked' do
