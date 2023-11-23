@@ -44,8 +44,15 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# To generate fake data
+gem 'faker'
+
+# To open the browser when running tests
+gem 'launchy'
+
 # To add pagination when there are more posts
 gem 'will_paginate'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
