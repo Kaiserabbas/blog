@@ -37,27 +37,31 @@ RSpec.describe Post, type: :model do
 
   it 'is not valid with a non-integer comments_counter' do
     user = User.create(name: 'Tom', posts_counter: 0)
-    post = Post.create(author: user, title: 'My Post')
-    post.valid?
+    post = Post.new(author: user, title: 'My Post')
+    post.comments_counter = 'non-integer' # Set comments_counter to a non-integer value
+    post.save
+
+    expect(post).not_to be_valid
     expect(post.errors[:comments_counter]).to include('must be an integer')
   end
 
+
   it 'is not valid with a non-numeric comments_counter' do
-    user = User.create(name: 'Tom', post_counter: 0)
+    user = User.create(name: 'Tom', posts_counter: 0)
     post = user.posts.new(title: 'My Post', comments_counter: 'abc', likes_counter: 0)
     post.valid?
     expect(post.errors[:comments_counter]).to include('is not a number')
   end
 
   it 'is not valid with a non-integer likes_counter' do
-    user = User.create(name: 'Tom', post_counter: 0)
+    user = User.create(name: 'Tom', posts_counter: 0)
     post = user.posts.new(title: 'My Post', comments_counter: 0, likes_counter: 1.5)
     post.valid?
     expect(post.errors[:likes_counter]).to include('must be an integer')
   end
 
   it 'is not valid with a non-numeric likes_counter' do
-    user = User.create(name: 'Tom', post_counter: 0)
+    user = User.create(name: 'Tom', posts_counter: 0)
     post = user.posts.new(title: 'My Post', comments_counter: 0, likes_counter: 'abc')
     post.valid?
     expect(post.errors[:likes_counter]).to include('is not a number')
@@ -74,7 +78,7 @@ RSpec.describe Post, type: :model do
   end
 
   it 'returns the 5 most recent comments for a post' do
-    user = User.create(name: 'Tom', post_counter: 0)
+    user = User.create(name: 'Tom', posts_counter: 0)
     post = user.posts.create(title: 'My Post', comments_counter: 0, likes_counter: 0)
     6.times { post.comments.create(user:, text: 'Nice post!') }
 
