@@ -9,21 +9,22 @@
       <span>No of Posts: <%= @user.posts.count %></span>
     </div>
   </div>
+  <button><%= link_to 'Back to Profile', user_path(@user) %></button>
    <!-- Link to create a new post -->
   <button><%= link_to "Create a New Post", new_user_post_path(@user) %></button>
-  
-  <% @posts.each do |post| %>
+  <h2>All posts by User<h2> 
+
+  <% @posts.includes(:author).each do |post| %> 
     <div class="user-posts">
-      <h2><strong><%= link_to "Post ##{post.id}", user_post_path(@user, post) %>
-</strong> </h2>
-      <p><%= post.text %></p>
+      <h2><%= link_to "Post ##{post.title}", user_post_path(@user, post) %></h2>
+      <%= post.text %>
       <p class="comments-likes">Comments: <%= post.comments.count %>, Likes: <%= post.likes.count %> </p>
       <hr>
       <button><%= link_to "Add comment", new_user_post_comment_path(post.author, post) %></button>
-      <% post.recent_comments.each do |comment| %>
-        <p><strong><%= comment.user.name %>: </strong> <%= comment.text %></p>
+      <% post.recent_comments.includes(:user).each do |comment| %>
+        <p><%= comment.user.name %>: <%= comment.text %></p>
       <% end %>
     </div>
   <% end %>
-  <button><%= link_to 'Back to Profile', user_path(@user) %></button>
 </div>
+<%= will_paginate @posts %>
