@@ -41,7 +41,6 @@ scenario 'Displays post title and some of the post body' do
     sleep(1)
     expect(current_path).to eq(user_post_path(user, post))
   end
-end
 
 scenario 'Displays post title and some of the post body' do
     expect(page).to have_content(post.title)
