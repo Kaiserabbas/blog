@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   it 'is valid with a user and a post' do
-    user = User.create(name: 'John', post_counter: 0)
+    user = User.create(name: 'John', posts_counter: 0)
     post = Post.create(author: user, title: 'My Post')
     like = Like.new(user:, post:)
     expect(like).to be_valid
@@ -16,7 +16,7 @@ RSpec.describe Like, type: :model do
   end
 
   it 'updates the likes counter for a post' do
-    user = User.create(name: 'John', post_counter: 1)
+    user = User.create(name: 'John', posts_counter: 1)
     post = Post.create(author: user, title: 'My Post')
     like = Like.create(user:, post:)
 
