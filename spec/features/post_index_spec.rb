@@ -13,9 +13,8 @@ RSpec.feature 'User Post Index Page' do
     expect(page).to have_content(user.name)
     expect(page).to have_content("No of Posts: #{user.posts.count}")
     expect(page).to have_content("Likes: #{post.likes_counter}")
-    save_and_open_page
   end
-scenario 'Displays post title and some of the post body' do
+  scenario 'Displays post title and some of the post body' do
     expect(page).to have_content(post.title)
     expect(page).to have_content('Hello world!')
   end
@@ -27,11 +26,11 @@ scenario 'Displays post title and some of the post body' do
 
   scenario 'Displays I can see how many likes a post has.' do
     expect(page).to have_content("Likes: #{post.likes_counter}")
-  end  
+  end
 
   scenario 'Displays pagination section when there are more than 5 posts' do
     6.times { Post.create(author: user, title: 'My post', text: 'Ruby on Rails.') }
-    
+
     visit user_posts_path(user)
     expect(page).to have_css('.pagination')
   end
@@ -42,7 +41,7 @@ scenario 'Displays post title and some of the post body' do
     expect(current_path).to eq(user_post_path(user, post))
   end
 
-scenario 'Displays post title and some of the post body' do
+  scenario 'Displays post title and some of the post body' do
     expect(page).to have_content(post.title)
     expect(page).to have_content('Hello world!')
   end
@@ -54,11 +53,11 @@ scenario 'Displays post title and some of the post body' do
 
   scenario 'Displays I can see how many likes a post has.' do
     expect(page).to have_content("Likes: #{post.likes_counter}")
-  end  
+  end
 
   scenario 'Displays pagination section when there are more than 5 posts' do
     6.times { Post.create(author: user, title: 'My post', text: 'Ruby on Rails.') }
-    
+
     visit user_posts_path(user)
     expect(page).to have_css('.pagination')
   end
