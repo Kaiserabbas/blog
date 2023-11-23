@@ -11,12 +11,11 @@ RSpec.feature 'Post Show Page' do
     expect(page).to have_content(post1.title)
     expect(page).to have_content(user1.name)
   end
-  
+
   scenario 'Displays how many comments and likes the post has' do
     visit user_post_path(user1, post1)
     expect(page).to have_content("Comments: #{post1.comments.count}")
     expect(page).to have_content("Likes: #{post1.likes.count}")
-    save_and_open_page
   end
 
   scenario 'Displays the post body' do
