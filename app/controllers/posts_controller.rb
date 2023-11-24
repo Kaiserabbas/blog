@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments).paginate(page: params[:page], per_page: 6)
   end
+
   def show
     @user = User.find_by_id(params[:user_id])
     @post = Post.find_by_id(params[:id])
@@ -58,6 +59,7 @@ class PostsController < ApplicationController
 
 
   private
+
   def set_post
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
@@ -65,6 +67,7 @@ class PostsController < ApplicationController
     flash[:error] = 'Post not found'
     redirect_to user_posts_path(@user)
   end
+
   def initialize_like
     @like = Like.new
   end
