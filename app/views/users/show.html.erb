@@ -1,9 +1,14 @@
 <!-- Placeholder for show -->
 <div>      
   <div class="user">
-    <div class= "user-photo">
+    <div class="user-photo">
+    <% if @user.photo.present? %>
       <%= image_tag(@user.photo, alt: @user.name, class: "photo") %>
-      </div>
+    <% else %>
+      <!-- Add a default image or placeholder here -->
+      <%= image_tag("default_image.png", alt: "Default Image", class: "photo") %>
+    <% end %>
+  </div>
       <div class="user-details">
         <h1><%= @user.name %></h1>
         <span>No of Posts: <%= @user.posts.count %></span>

@@ -1,6 +1,11 @@
 <div class="user">
   <div class="user-photo">
-    <%= image_tag(user.photo, alt: user.name, class: "photo") %>
+    <% if user.photo.present? %>
+      <%= image_tag(user.photo, alt: user.name, class: "photo") %>
+    <% else %>
+      <!-- Add a default image or placeholder here -->
+      <%= image_tag("default_image.png", alt: "Default Image", class: "photo") %>
+    <% end %>
   </div>
   <div class="user-details">
     <h1><%= link_to user.name, user_path(user) %></h1>
