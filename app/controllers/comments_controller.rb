@@ -46,7 +46,6 @@ class CommentsController < ApplicationController
     redirect_to user_post_path(@post.author, @post)
   end
 
-
   private
 
   def set_post

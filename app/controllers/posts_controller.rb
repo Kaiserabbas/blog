@@ -57,7 +57,6 @@ class PostsController < ApplicationController
     redirect_to user_posts_path(@user)
   end
 
-
   private
 
   def set_post
