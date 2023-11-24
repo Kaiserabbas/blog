@@ -1,4 +1,5 @@
 <!-- Placeholder for index -->
+<%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
 <div class="main">
   <h1>List of all users:</h1>
   <% @users.each do |user| %>
