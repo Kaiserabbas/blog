@@ -50,7 +50,7 @@ body {
 
 button {
   background-color: #9595f1;
-  color: #000;
+  color: #9b1515;
   font-size: 1.2em;
   border-radius: 10px;
   box-shadow: 0 0 7px 2px #9595f1a1;
@@ -68,7 +68,7 @@ button a {
 }
 
 .button {
-  background-color: #9595f1;
+  background-color: #060627;
   color: #000;
   font-size: 1.2em;
   border-radius: 10px;
@@ -139,4 +139,8 @@ hr {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+}
+
+.delete {
+  font-size: 0.5em;
 }
