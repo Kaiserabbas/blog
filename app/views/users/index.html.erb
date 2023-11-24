@@ -1,8 +1,9 @@
 <!-- Placeholder for index -->
-<%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+<%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete, class: 'button'} %>
 <div class="main">
   <h1>List of all users:</h1>
   <% @users.each do |user| %>
     <%= render partial: 'users/user_details', locals: { user: user } %>
   <% end %>
 </div>
+<%= will_paginate @posts %>
