@@ -1,7 +1,7 @@
 <div class="user-posts">
     <div class="single-post">
     <% if can? :destroy, @post %>
-      <%= link_to "Delete Post", user_post_path(@post.author, @post), data: { turbo_method: :delete, turbo_confirm: "This post will be permanently removed. Do you want to proceed?" } %>
+      <%= button_to "Delete Post", user_post_path(@post.author, @post), method: :delete, data: { confirm: "This post will be permanently removed. Do you want to proceed?" } %>
     <% end %>
     <h2><strong> Post #<%= @post.title %> by <%= @user.name %></strong> </h2><span>Comments: <%= @post.comments.count %>, Likes: <%= @post.likes.count %></span>
     </div>
