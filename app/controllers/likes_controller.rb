@@ -14,7 +14,7 @@ class LikesController < ApplicationController
     if @like.save
       redirect_to user_post_path(@post.author, @post), notice: 'Post liked!'
     else
-      render :new
+      redirect_to user_post_path(@post.author, @post), notice: 'You have already liked!'
     end
   end
 
