@@ -15,6 +15,9 @@
       <p>
         <strong><%= comment.user.name %>:</strong> <%= comment.text %>
         <%= link_to "Edit", edit_user_post_comment_path(@post.author, @post, comment) %>
+        <% if can? :destroy, comment %>
+          <%= link_to "Delete comment", user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: "Do you really want to delete this comment?" } %>
+        <% end %>
       </p>
 <% end %>
 
