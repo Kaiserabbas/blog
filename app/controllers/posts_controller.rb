@@ -30,6 +30,15 @@ class PostsController < ApplicationController
     @comments = @post.comments
   end
 
+    def destroy
+    @post = Post.find(params[:id])
+    @user = @post.author
+    @post.destroy
+    @user.posts_counter -= 1
+
+    redirect_to user_posts_path(@user) if @user.save
+  end
+  
   private
 
   def set_post
