@@ -22,29 +22,49 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments).paginate(page: params[:page], per_page: 6)
   end
-
   def show
     @user = User.find_by_id(params[:user_id])
     @post = Post.find_by_id(params[:id])
-    @like = @post.likes
-    @comments = @post.comments
+
+    if @post
+      @like = @post.likes
+      @comments = @post.comments
+    else
+      flash[:error] = 'Post not found'
+      # Redirect or handle the scenario where the post isn't found
+      redirect_to user_posts_path(@user)
+    end
   end
 
-    def destroy
-    @post = Post.find(params[:id])
-    @user = @post.author
-    @post.destroy
-    @user.posts_counter -= 1
+  def destroy
+    @post = Post.find_by(id: params[:id])
 
-    redirect_to user_posts_path(@user) if @user.save
+    if @post
+      @user = @post.author
+
+      if @post.destroy
+        @user.posts_counter -= 1
+        @user.save
+        flash[:notice] = 'Post deleted successfully.'
+      else
+        flash[:error] = 'Failed to delete post.'
+      end
+    else
+      flash[:error] = 'Post not found.'
+    end
+
+    redirect_to user_posts_path(@user)
   end
-  
+
+
   private
-
   def set_post
-    @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = 'Post not found'
+    redirect_to user_posts_path(@user)
   end
-
   def initialize_like
     @like = Like.new
   end
