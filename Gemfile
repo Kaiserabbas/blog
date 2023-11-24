@@ -53,6 +53,9 @@ gem 'launchy'
 # To add pagination when there are more posts
 gem 'will_paginate'
 
+# To add cancancan
+gem 'cancancan'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

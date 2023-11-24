@@ -1,5 +1,8 @@
 <div class="user-posts">
     <div class="single-post">
+    <% if can? :destroy, @post %>
+      <%= button_to "Delete Post", user_post_path(@post.author, @post), method: :delete, data: { confirm: "This post will be permanently removed. Do you want to proceed?" } %>
+    <% end %>
     <h2><strong> Post #<%= @post.title %> by <%= @user.name %></strong> </h2><span>Comments: <%= @post.comments.count %>, Likes: <%= @post.likes.count %></span>
     </div>
     <p><%= @post.text %></p>
@@ -11,7 +14,12 @@
       <% @post.comments.includes(:user).each do |comment| %>
       <p>
         <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+        <% if can? :edit, comment %>
         <%= link_to "Edit", edit_user_post_comment_path(@post.author, @post, comment) %>
+        <% end %>
+        <% if can? :destroy, comment %>
+          <%= button_to "Delete", user_post_comment_path(@post.author, @post, comment), method: :delete, data: { confirm: "This comment will be permanently removed. Do you want to proceed?", class: 'delete'  } %>
+        <% end %>
       </p>
 <% end %>
 

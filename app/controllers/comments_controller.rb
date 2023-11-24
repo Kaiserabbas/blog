@@ -1,15 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :set_user
+  load_and_authorize_resource
   before_action :set_post
-  before_action :set_comment, only: [:show]
-
   def new
-    @comment = @post.comments.new
+    @comment = Comment.new
   end
 
   def create
     @comment = current_user.comments.build(comment_params.merge(post: @post))
     if @comment.save
+      @post.comments_counter += 1
       redirect_to user_post_path(@post.author, @post)
     else
       render :new
@@ -33,18 +32,24 @@ class CommentsController < ApplicationController
     @comments = @post.comments
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+
+    if @comment.destroy
+      @post.update(comments_counter: @post.comments.count)
+      flash[:notice] = 'Comment deleted successfully.'
+    else
+      flash[:error] = 'Failed to delete comment.'
+    end
+
+    redirect_to user_post_path(@post.author, @post)
+  end
+
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
   def set_post
-    @post = @user.posts.find(params[:post_id])
-  end
-
-  def set_comment
-    @comment = @post.comments.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 
   def comment_params
