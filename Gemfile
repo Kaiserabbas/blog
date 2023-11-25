@@ -56,6 +56,9 @@ gem 'will_paginate'
 # To add cancancan
 gem 'cancancan'
 
+# integrates JWT with Devise, allowing you to use JWT tokens for authentication within a Devise-based Rails application.
+gem 'jwt'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
